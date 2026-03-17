@@ -94,6 +94,7 @@ export interface AdminOrderItem {
   manual_form_submission?: Record<string, unknown>
   coupon_discount_amount?: number
   promotion_discount_amount?: number
+  member_discount_amount?: number
 }
 
 export interface AdminFulfillment {
@@ -120,6 +121,7 @@ export interface AdminOrder {
   original_amount: number
   discount_amount: number
   promotion_discount_amount: number
+  member_discount_amount?: number
   total_amount: number
   wallet_paid_amount: number
   online_paid_amount: number

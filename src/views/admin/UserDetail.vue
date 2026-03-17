@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import type { AcceptableValue } from 'reka-ui'
 import {
   orderStatusClass as orderStatusClassMap,
   orderStatusLabel as orderStatusLabelMap,
@@ -119,7 +120,7 @@ const currentMemberLevelName = computed(() => {
   return getLocalizedText(level.name)
 })
 
-const handleMemberLevelChange = async (value: string) => {
+const handleMemberLevelChange = async (value: AcceptableValue) => {
   const levelId = Number(value)
   if (!Number.isFinite(levelId) || !user.value) return
   memberLevelUpdating.value = true

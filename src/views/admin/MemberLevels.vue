@@ -13,7 +13,7 @@ import { formatDate, getLocalizedText } from '@/utils/format'
 import { notifyError, notifySuccess } from '@/utils/notify'
 import { confirmAction } from '@/utils/confirm'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
 const loading = ref(true)
 const levels = ref<AdminMemberLevel[]>([])
@@ -315,7 +315,7 @@ onMounted(() => {
                   <span class="w-20 text-xs text-muted-foreground">{{ getLocaleLabel(loc) }}</span>
                   <Input
                     :model-value="form.name[loc] || ''"
-                    @update:model-value="(v: string) => { form.name[loc] = v }"
+                    @update:model-value="(v: string | number) => { form.name[loc] = String(v) }"
                     :placeholder="t('admin.memberLevels.form.namePlaceholder')"
                   />
                 </div>
