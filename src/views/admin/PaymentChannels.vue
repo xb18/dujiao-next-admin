@@ -99,6 +99,18 @@ const channelTypeLabel = (value?: string) => {
   return map[value || ''] || value || '-'
 }
 
+const resolveChannelTypeDisplay = (channel: AdminPaymentChannel) => {
+  if (channel.provider_type === 'tokenpay') {
+    const currency = String(channel.config_json?.currency || '').trim().toUpperCase()
+    return currency || 'USDT'
+  }
+  if (channel.provider_type === 'epusdt') {
+    const tradeType = String(channel.config_json?.trade_type || '').trim()
+    return tradeType || 'usdt.trc20'
+  }
+  return channelTypeLabel(channel.channel_type)
+}
+
 const interactionModeLabel = (value?: string) => {
   const map: Record<string, string> = {
     qr: t('admin.paymentChannels.interactionModes.qr'),
@@ -260,7 +272,7 @@ watch(
             </TableCell>
             <TableCell class="min-w-[220px] px-6 py-4 text-xs text-muted-foreground">
               <div class="break-words">{{ providerTypeLabel(channel.provider_type) }}</div>
-              <div class="break-words text-muted-foreground">{{ channelTypeLabel(channel.channel_type) }}</div>
+              <div class="break-words text-muted-foreground">{{ resolveChannelTypeDisplay(channel) }}</div>
             </TableCell>
             <TableCell class="min-w-[140px] px-6 py-4 text-xs text-muted-foreground">{{ interactionModeLabel(channel.interaction_mode) }}</TableCell>
             <TableCell class="min-w-[120px] px-6 py-4 text-xs text-muted-foreground">{{ formatFeeRate(channel) }}</TableCell>
