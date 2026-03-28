@@ -625,7 +625,7 @@ onMounted(() => {
               </div>
               <div class="mt-1 flex flex-col gap-1 text-xs font-semibold text-foreground sm:flex-row sm:items-center sm:justify-between">
                 <span>{{ t('admin.dashboard.rankings.paidAmount') }}: {{ formatMoney(item.paid_amount, overview?.currency) }}</span>
-                <span>{{ t('admin.dashboard.ranking.profit') }}: {{ formatMoney(item.profit, overview?.currency) }}</span>
+                <span>{{ t('admin.dashboard.rankings.profit') }}: {{ formatMoney(item.profit, overview?.currency) }}</span>
               </div>
             </div>
           </div>
