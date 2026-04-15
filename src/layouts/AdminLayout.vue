@@ -162,6 +162,12 @@ const navGroups = computed<NavGroup[]>(() => {
           icon: ShieldCheck,
           permission: 'GET:/admin/settings',
         },
+        {
+          label: t('admin.navItems.orderRefunds'),
+          to: '/order-refunds',
+          icon: ReceiptText,
+          permission: 'GET:/admin/order-refunds',
+        },
       ],
     },
     {
